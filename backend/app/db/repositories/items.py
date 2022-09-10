@@ -162,7 +162,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
 
             # fmt: off
             query = query.where(
-               items.title == title
+               items.title.like(title + "%")
             )
             # fmt: on
 
