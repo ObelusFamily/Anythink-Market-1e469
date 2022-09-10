@@ -1,6 +1,7 @@
 from typing import List, Optional, Sequence, Union
 
 from asyncpg import Connection, Record
+from app.resources import strings
 from pypika import Query
 
 from app.db.errors import EntityDoesNotExist
@@ -44,7 +45,7 @@ class ItemsRepository(BaseRepository):  # noqa: WPS214
     ) -> Item:
         async with self.connection.transaction():
             if(image == ""):
-                image = "/placeholder.png"
+                image = strings.DEFAULT_IMAGE
             item_row = await queries.create_new_item(
                 self.connection,
                 slug=slug,

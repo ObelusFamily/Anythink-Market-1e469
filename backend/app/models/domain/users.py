@@ -3,13 +3,14 @@ from typing import Optional
 from app.models.common import DateTimeModelMixin, IDModelMixin
 from app.models.domain.rwmodel import RWModel
 from app.services import security
+from app.resources import strings
 
 
 class User(RWModel):
     username: str
     email: str
     bio: str = ""
-    image: Optional[str] = "/placeholder.png"
+    image: Optional[str] = strings.DEFAULT_IMAGE
 
 
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):

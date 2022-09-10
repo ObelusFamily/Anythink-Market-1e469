@@ -23,3 +23,5 @@ ITEM_IS_NOT_FAVORITED = "item is not favorited"
 COMMENT_DOES_NOT_EXIST = "comment does not exist"
 
 AUTHENTICATION_REQUIRED = "authentication required"
+
+DEFAULT_IMAGE = "/placeholder.png"

@@ -3,6 +3,7 @@ from typing import List, Optional
 from app.models.common import DateTimeModelMixin, IDModelMixin
 from app.models.domain.profiles import Profile
 from app.models.domain.rwmodel import RWModel
+from app.resources import strings
 
 
 class Item(IDModelMixin, DateTimeModelMixin, RWModel):
@@ -13,5 +14,5 @@ class Item(IDModelMixin, DateTimeModelMixin, RWModel):
     seller: Profile
     favorited: bool
     favorites_count: int
-    image: Optional[str]
+    image: Optional[str] = strings.DEFAULT_IMAGE
     body: Optional[str]

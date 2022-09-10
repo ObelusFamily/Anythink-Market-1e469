@@ -1,4 +1,5 @@
 from typing import Optional
+from app.resources import strings
 
 from pydantic import BaseModel, EmailStr, HttpUrl
 
@@ -20,7 +21,7 @@ class UserInUpdate(BaseModel):
     email: Optional[EmailStr] = None
     password: Optional[str] = None
     bio: Optional[str] = None
-    image: Optional[HttpUrl] = None
+    image: Optional[HttpUrl] = strings.DEFAULT_IMAGE
 
 
 class UserWithToken(User):

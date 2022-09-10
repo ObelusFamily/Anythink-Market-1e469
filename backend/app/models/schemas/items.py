@@ -1,4 +1,5 @@
 from typing import List, Optional
+from app.resources import strings
 
 from pydantic import BaseModel, Field
 
@@ -21,7 +22,7 @@ class ItemInCreate(RWSchema):
     title: str
     description: str
     body: Optional[str] = None
-    image: Optional[str] = None
+    image: Optional[str] = strings.DEFAULT_IMAGE
     tags: List[str] = Field([], alias="tagList")
 
 
