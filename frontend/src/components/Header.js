@@ -46,7 +46,6 @@ const LoggedInView = (props) => {
               className="user-pic pr-1"
               alt={props.currentUser.username}
             />
-            
             {props.currentUser.username}
           </Link>
         </li>
