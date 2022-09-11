@@ -59,3 +59,12 @@ body {
 .user-info {
   min-width: 800px;
 }
+
+// 768 is the normal width for tablets, so this should work for most mobile devices
+@media (max-width: 768px) {
+  .profile-page {
+    .user-info {
+      min-width: 0px;
+    }
+  }
+}
