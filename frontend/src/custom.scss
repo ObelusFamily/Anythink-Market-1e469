@@ -59,3 +59,10 @@ body {
 .user-info {
   min-width: 800px;
 }
+
+// 1024 is the normal width for tablets and ipads, so this should work for all mobile devices
+@media (max-width: 1024px) {
+  .user-info {
+    max-width: 1024px;
+  }
+}
