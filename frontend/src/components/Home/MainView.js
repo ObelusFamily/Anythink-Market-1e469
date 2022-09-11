@@ -71,9 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const MainView = (props) => {
   if (props.itemsCount === 0 && props.title !== "") {
-    return (
-        <h3 id="empty">No items found for "{props.title}"</h3>
-    );
+    return <h3 id="empty">No items found for "{props.title}"</h3>;
   }
   return (
     <div>
