@@ -9,8 +9,11 @@ const Banner = ({ title, setTitle, setShowScolding }) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
-          <span id="get-part">
-            A place to <a onClick={() => setShowSearch(!showSearch)}>get</a>
+          <span>
+            A place to{" "}
+            <span id="get-part" onClick={() => setShowSearch(!showSearch)}>
+              get
+            </span>
           </span>
           {showSearch && (
             <SearchBox
