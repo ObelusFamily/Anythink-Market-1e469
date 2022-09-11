@@ -73,7 +73,6 @@ const MainView = (props) => {
   const [showScolding, setShowScolding] = useState(false);
   useEffect(() => {
     if (props.itemsCount === 0 && !showScolding) setShowScolding(true);
-    else if (props.itemsCount !== 0 && showScolding) setShowScolding(false);
   }, [props.itemsCount, showScolding]);
   if (showScolding) {
     return (
