@@ -1,5 +1,5 @@
 import ItemList from "../ItemList";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import agent from "../../agent";
 import { connect } from "react-redux";
 import { CHANGE_TAB } from "../../constants/actionTypes";
@@ -70,8 +70,17 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MainView = (props) => {
-  if (props.itemsCount === 0 && props.title !== "") {
-    return <h3 id="empty">No items found for "{props.title}"</h3>;
+  const [showScolding, setShowScolding] = useState(props.itemsCount === 0 && props.title !== "");
+  useEffect(() => {
+    setShowScolding(props.itemsCount === 0 && props.title !== "")
+  }, [props.itemsCount, props.title])
+  
+  if (showScolding) {
+    return (
+      <div id="empty">
+        <h3>No items found for "{props.title}"</h3>;
+      </div>
+    )
   }
   return (
     <div>
