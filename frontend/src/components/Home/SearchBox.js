@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchBox = ({ title, setTitle }) => {
+const SearchBox = ({ title, setTitle, setShowScolding }) => {
   return (
     <input
       id="search-box"
@@ -9,6 +9,7 @@ const SearchBox = ({ title, setTitle }) => {
       value={title}
       onChange={(e) => {
         setTitle(e.target.value);
+        setShowScolding(true);
       }}
     ></input>
   );
