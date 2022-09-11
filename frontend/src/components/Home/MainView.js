@@ -70,43 +70,44 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const MainView = (props) => {
-  const [showScolding, setShowScolding] = useState(props.itemsCount === 0 && props.title !== "");
+  const [showScolding, setShowScolding] = useState(false);
   useEffect(() => {
-    setShowScolding(props.itemsCount === 0 && props.title !== "")
-  }, [props.itemsCount, props.title])
-  
+    if (props.itemsCount === 0 && !showScolding) setShowScolding(true);
+    else if (props.itemsCount !== 0 && showScolding) setShowScolding(false);
+  }, [props.itemsCount, showScolding]);
   if (showScolding) {
     return (
       <div id="empty">
-        <h3>No items found for "{props.title}"</h3>;
+        <h3>No items found for "{props.title}"</h3>
       </div>
-    )
+    );
+  } else {
+    return (
+      <div>
+        <div className="feed-toggle">
+          <ul className="nav nav-tabs">
+            <YourFeedTab
+              token={props.token}
+              tab={props.tab}
+              onTabClick={props.onTabClick}
+            />
+
+            <GlobalFeedTab tab={props.tab} onTabClick={props.onTabClick} />
+
+            <TagFilterTab tag={props.tag} />
+          </ul>
+        </div>
+
+        <ItemList
+          pager={props.pager}
+          items={props.items}
+          loading={props.loading}
+          itemsCount={props.itemsCount}
+          currentPage={props.currentPage}
+        />
+      </div>
+    );
   }
-  return (
-    <div>
-      <div className="feed-toggle">
-        <ul className="nav nav-tabs">
-          <YourFeedTab
-            token={props.token}
-            tab={props.tab}
-            onTabClick={props.onTabClick}
-          />
-
-          <GlobalFeedTab tab={props.tab} onTabClick={props.onTabClick} />
-
-          <TagFilterTab tag={props.tag} />
-        </ul>
-      </div>
-
-      <ItemList
-        pager={props.pager}
-        items={props.items}
-        loading={props.loading}
-        itemsCount={props.itemsCount}
-        currentPage={props.currentPage}
-      />
-    </div>
-  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainView);

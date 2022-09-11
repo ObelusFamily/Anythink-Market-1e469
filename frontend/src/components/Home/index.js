@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import MainView from "./MainView";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Tags from "./Tags";
 import agent from "../../agent";
 import { connect } from "react-redux";
@@ -28,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Home = (props) => {
   let { token, onLoad, onUnload, tags, onClickTag } = props;
-  const [title, setTitle] = React.useState("");
+  const [title, setTitle] = useState("");
   useEffect(() => {
     const tab = "all";
     const itemsPromise = agent.Items.all;
