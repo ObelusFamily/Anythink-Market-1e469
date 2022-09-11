@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
 const Home = (props) => {
   let { token, onLoad, onUnload, tags, onClickTag } = props;
   const [title, setTitle] = useState("");
+  const [showScolding, setShowScolding] = useState(false);
   useEffect(() => {
     const tab = "all";
     const itemsPromise = agent.Items.all;
@@ -43,11 +44,15 @@ const Home = (props) => {
 
   return (
     <div className="home-page">
-      <Banner title={title} setTitle={setTitle} />
+      <Banner
+        title={title}
+        setTitle={setTitle}
+        setShowScolding={setShowScolding}
+      />
 
       <div className="container page">
         <Tags tags={tags} onClickTag={onClickTag} />
-        <MainView title={title} />
+        <MainView title={title} showScolding={showScolding} />
       </div>
     </div>
   );
